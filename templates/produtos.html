@@ -1,0 +1,31 @@
+<h2>📦 Produtos</h2>
+
+<a href="/">⬅ Voltar</a><br><br>
+
+<table border="1" cellpadding="10">
+    <tr style="background-color: #4CAF50; color: white;">
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Código</th>
+        <th>Preço</th>
+        <th>Estoque</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for p in produtos %}
+    <tr>
+        <td>{{ p[0] }}</td>
+        <td>{{ p[1] }}</td>
+        <td>{{ p[2] }}</td>
+        <td>R$ {{ p[3] }}</td>
+        <td>{{ p[4] }}</td>
+        <td>
+            <a href="/entrada/{{ p[0] }}">➕</a>
+            <a href="/saida/{{ p[0] }}">➖</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</table>

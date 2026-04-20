@@ -1,0 +1,26 @@
+<h2>📊 Movimentações</h2>
+
+<a href="/">⬅ Voltar</a><br><br>
+
+<table border="1" cellpadding="10">
+    <tr style="background-color: #2196F3; color: white;">
+        <th>ID</th>
+        <th>Produto</th>
+        <th>Tipo</th>
+        <th>Quantidade</th>
+        <th>Data</th>
+    </tr>
+
+    {% for m in movimentacoes %}
+    <tr>
+        <td>{{ m[0] }}</td>
+        <td>{{ m[1] }}</td>
+        <td>{{ m[2] }}</td>
+        <td>{{ m[3] }}</td>
+        <td>{{ m[4] }}</td>
+    </tr>
+    {% endfor %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</table>

@@ -1,0 +1,77 @@
+from flask import Flask, render_template, request, redirect
+import sqlite3
+
+app = Flask(__name__)
+
+def conectar():
+    return sqlite3.connect("estoque.db")
+
+def criar_banco():
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS produtos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT,
+            codigo TEXT,
+            preco REAL,
+            estoque INTEGER
+        )
+    """)
+    conn.commit()
+    conn.close()
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/produtos")
+def produtos():
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM produtos")
+    dados = cursor.fetchall()
+    conn.close()
+    return render_template("produtos.html", produtos=dados)
+
+@app.route("/add", methods=["GET", "POST"])
+def add():
+    if request.method == "POST":
+        nome = request.form["nome"]
+        codigo = request.form["codigo"]
+        preco = float(request.form["preco"])
+        estoque = int(request.form["estoque"])
+
+        conn = conectar()
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO produtos (nome, codigo, preco, estoque) VALUES (?, ?, ?, ?)",
+            (nome, codigo, preco, estoque)
+        )
+        conn.commit()
+        conn.close()
+
+        return redirect("/produtos")
+
+    return render_template("add_produto.html")
+
+if __name__ == "__main__":
+    criar_banco()
+    app.run(debug=True)
+
+    <h2>Adicionar Produto</h2>
+
+<form method="POST">
+    Nome: <input type="text" name="nome"><br><br>
+    Código: <input type="text" name="codigo"><br><br>
+    Preço: <input type="number" step="0.01" name="preco"><br><br>
+    Estoque: <input type="number" name="estoque"><br><br>
+
+    <button type="submit">Salvar</button>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</form>
+
+<br>
+<a href="/">Voltar</a>

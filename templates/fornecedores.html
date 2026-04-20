@@ -1,0 +1,26 @@
+<h2>🏢 Fornecedores</h2>
+
+<a href="/">⬅ Voltar</a><br><br>
+
+<a href="/add_fornecedor">➕ Novo Fornecedor</a><br><br>
+
+<table border="1" cellpadding="10">
+    <tr style="background-color: #FF9800; color: white;">
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Contato</th>
+        <th>Documento</th>
+    </tr>
+
+    {% for f in fornecedores %}
+    <tr>
+        <td>{{ f[0] }}</td>
+        <td>{{ f[1] }}</td>
+        <td>{{ f[2] }}</td>
+        <td>{{ f[3] }}</td>
+    </tr>
+    {% endfor %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</table>

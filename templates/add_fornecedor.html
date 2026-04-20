@@ -1,0 +1,19 @@
+<h2>➕ Novo Fornecedor</h2>
+
+<a href="/fornecedores">⬅ Voltar</a><br><br>
+
+<form method="POST">
+    Nome:<br>
+    <input type="text" name="nome"><br><br>
+
+    Contato:<br>
+    <input type="text" name="contato"><br><br>
+
+    CNPJ/CPF:<br>
+    <input type="text" name="documento"><br><br>
+
+    <button type="submit">Salvar</button>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</form>
