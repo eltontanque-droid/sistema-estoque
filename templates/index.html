@@ -2,35 +2,36 @@
 <html>
 <head>
     <title>Sistema de Estoque</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body style="font-family: Arial; text-align: center;">
 
     <h1>📦 Sistema de Estoque</h1>
 
     <br>
 
-    <a href="/produtos">
+    <a href="{{ url_for('produtos') }}">
         <button>📋 Ver Produtos</button>
     </a>
 
     <br><br>
 
-    <a href="/add">
+    <a href="{{ url_for('add') }}">
         <button>➕ Adicionar Produto</button>
     </a>
 
     <br><br>
 
-    <a href="/movimentacoes">
+    <a href="{{ url_for('movimentacoes') }}">
         <button>📊 Movimentações</button>
     </a>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <br><br>
+
+    <a href="{{ url_for('fornecedores') }}">
+        <button>🏢 Fornecedores</button>
+    </a>
+
 </body>
 </html>
-
-<br><br>
-
-<a href="/fornecedores">
-    <button>🏢 Fornecedores</button>
-</a>
