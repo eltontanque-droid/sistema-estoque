@@ -5,33 +5,36 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body style="font-family: Arial; text-align: center;">
+<body>
 
     <h1>📦 Sistema de Estoque</h1>
 
-    <br>
+    <div class="container">
 
-    <a href="{{ url_for('produtos') }}">
-        <button>📋 Ver Produtos</button>
-    </a>
+        <br>
 
-    <br><br>
+        <a href="{{ url_for('produtos') }}">
+            <button>📋 Ver Produtos</button>
+        </a>
 
-    <a href="{{ url_for('add') }}">
-        <button>➕ Adicionar Produto</button>
-    </a>
+        <br><br>
 
-    <br><br>
+        <a href="{{ url_for('add') }}">
+            <button>➕ Adicionar Produto</button>
+        </a>
 
-    <a href="{{ url_for('movimentacoes') }}">
-        <button>📊 Movimentações</button>
-    </a>
+        <br><br>
 
-    <br><br>
+        <a href="{{ url_for('movimentacoes') }}">
+            <button>📊 Movimentações</button>
+        </a>
 
-    <a href="{{ url_for('fornecedores') }}">
-        <button>🏢 Fornecedores</button>
-    </a>
+        <br><br>
+
+        <a href="{{ url_for('fornecedores') }}">
+            <button>🏢 Fornecedores</button>
+        </a>
+
+    </div>
 
 </body>
-</html>
